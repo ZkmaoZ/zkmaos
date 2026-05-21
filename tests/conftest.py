@@ -8,14 +8,12 @@ import pytest
 
 @pytest.fixture(autouse=True)
 def _isolated_storage(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
-    from agents import researcher, synthesizer
-    from storage import db
+    from agents import diff, researcher, synthesizer
+    from storage import db, vectors
 
-    db_path = tmp_path / "test.db"
-    raw_dir = tmp_path / "raw"
-    reports_dir = tmp_path / "reports"
-
-    monkeypatch.setattr(db, "DB_PATH", db_path)
-    monkeypatch.setattr(researcher, "RAW_DIR", raw_dir)
-    monkeypatch.setattr(synthesizer, "REPORTS_DIR", reports_dir)
+    monkeypatch.setattr(db, "DB_PATH", tmp_path / "test.db")
+    monkeypatch.setattr(vectors, "DB_PATH", tmp_path / "vectors.db")
+    monkeypatch.setattr(researcher, "RAW_DIR", tmp_path / "raw")
+    monkeypatch.setattr(synthesizer, "REPORTS_DIR", tmp_path / "reports")
+    monkeypatch.setattr(diff, "DIFF_DIR", tmp_path / "reports" / "diffs")
     return tmp_path
