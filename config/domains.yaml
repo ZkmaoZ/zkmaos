@@ -1,0 +1,28 @@
+# 도메인별 검색 소스 설정
+paper:
+  primary:
+    - name: arxiv
+      adapter: tools.sources.arxiv_search
+    - name: semantic_scholar
+      adapter: tools.sources.semantic_scholar_search
+  max_results: 5
+
+news:
+  primary:
+    - name: web
+      adapter: tools.sources.news_search
+  max_results: 5
+
+market:
+  primary:
+    - name: web
+      adapter: tools.sources.news_search
+  notes: |
+    Statista, 협회 리포트, 기업 IR PDF 우선. 무료 접근 가능 자료만.
+  max_results: 5
+
+patent:
+  primary:
+    - name: patents
+      adapter: tools.sources.patent_search
+  max_results: 5
