@@ -1,0 +1,48 @@
+# KISED 발산 스캔 — 고정 축
+#
+# 경고: 이 파일의 값을 임의로 바꾸면 누적된 모든 스캔이 비교 불능이 된다.
+# 변경이 필요하면 별도 브랜치 + 축 변경 사유서를 README에 남길 것.
+# v0 = 미검증 초기 버전, 다음 스캔 1회로 검증 후 갱신.
+
+version: v0
+locked: true
+
+# X축 — 글로벌 인정. 아래 8매체 중 threshold_global 이상에서 핵심
+# 카테고리로 등재 시 ★ 강함.
+media:
+  - a16z
+  - Sequoia
+  - Bessemer
+  - McKinsey
+  - Gartner
+  - YC RFS
+  - CB Insights
+  - VC Cafe
+
+threshold_global: 2
+
+# Y축 — 한국 진입 가능성. 아래 6시그널 중 threshold_korea 이상 충족 시
+# ★ 강함.
+signals:
+  capital_entry:        "자본 진입(5억~500억 검증 사례)"
+  industry_adjacency:   "강한 산업 인접(반도체·조선·자동차·콘텐츠·게임·방산·바이오)"
+  gov_policy:           "정부 정책·R&D 자금"
+  validated_revenue:    "검증 매출·이용자 사례"
+  talent_pool:          "인력 풀"
+  korean_regulatory_fit: "한국어·규제 친화(빅테크 미진입)"
+
+threshold_korea: 2
+
+# 4분면
+quadrants:
+  G1_new_path:      "새로운 길 (글로벌★ + 한국★)"
+  G2_global_chase:  "글로벌 추격 (글로벌★ + 한국△)"
+  G3_korea_unique:  "한국 특이 (글로벌△ + 한국★)"
+  G4_weak_signal:   "시그널 부족 (글로벌△ + 한국△)"
+
+# 자본 티어. 그룹1 × 티어 = L1~L4 진입 순위.
+capital_tiers:
+  - "<5억"
+  - "5~50억"
+  - "50~500억"
+  - "500억+"
