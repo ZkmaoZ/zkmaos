@@ -22,8 +22,9 @@ docs/          # 설계 문서
 
 ## 핵심 워크플로
 1. `python -m agents.run "주제"` 로 단발 리서치 실행
-2. `/loop 1w python -m agents.run "주제"` 로 주간 모니터링
-3. 결과물은 `reports/YYYY-MM-DD-<slug>.md` 로 저장
+2. `python -m agents.run "주제" --no-llm` 로 API 키 없이 검색·폴백 보고서만 생성
+3. `/loop 1w python -m agents.run "주제"` 로 주간 모니터링
+4. 결과물은 `reports/YYYY-MM-DD-<slug>.md` 로 저장
 
 ## 도메인 커버리지
 학술(arXiv/Semantic Scholar), 기술 뉴스, 시장·산업 보고서, 특허·법률.
